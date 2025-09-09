@@ -114,8 +114,10 @@ This project uses **ChromaDB**, which requires **SQLite ≥ 3.35.0**. Most Linux
    
 ## 🖼️ Application Snapshot
 
+### 📝 Detailed Mode with Document Analysis
 ![Detailed Mode with Document Analysis](Detailed_Mode.png)
 
+### ⚡ Concise Mode with Web Search
 ![Concise Mode with Web Search](Concise_Mode.png)
 
 ---
