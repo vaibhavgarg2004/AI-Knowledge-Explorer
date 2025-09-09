@@ -112,11 +112,13 @@ This project uses **ChromaDB**, which requires **SQLite ≥ 3.35.0**. Most Linux
 
 ---
    
-<!-- ## 🖼️ Application Snapshot
+## 🖼️ Application Snapshot
 
-![Application UI](chat_assistant_ui_preview.png)
+![Detailed Mode with Document Analysis](Detailed_Mode.png)
 
---- -->
+![Concise Mode with Web Search](Concise_Mode.png)
+
+---
 
 ## 📄 License
 This project is licensed under the **Apache License 2.0**. See the [LICENSE](./LICENSE) file for details.
