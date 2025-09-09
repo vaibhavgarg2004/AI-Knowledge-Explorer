@@ -1,8 +1,8 @@
-# 🛒 E-commerce Chat Assistant
+# 🤖 AI Multi-Provider Chatbot
 
-A smart, conversational AI chat assistant built using Streamlit that enhances user experience on e-commerce platforms by handling both customer queries and product discovery. Powered by Retrieval-Augmented Generation (RAG) using LLaMA3 (via GROQ) and local database integration, this assistant helps users with instant and intelligent responses.
+A smart, conversational AI chatbot built using Streamlit that integrates local document retrieval (RAG) and real-time web search (via SerpAPI). Powered by LLaMA3 via GROQ, this assistant provides accurate and context-aware answers for general knowledge, uploaded documents, and live queries.
 
----
+<!-- ---
 
 ## 🌐 Live Website
 You can try the tool live here: **[E-commerce Chat Assistant](https://vaibhav-project-e-commerce-chat-assistant.streamlit.app/)**
@@ -10,51 +10,45 @@ You can try the tool live here: **[E-commerce Chat Assistant](https://vaibhav-pr
 ---
 
 ## 🎥 Presentation
-Watch the full project presentation here: **[E-commerce Chat Assistant](https://vaibhav-project.my.canva.site/e-commerce-chat-assistant-presentation)**
-
----
-
-## 📌 Dataset Information
-The product data currently includes only women’s footwear. Each product contains attributes like brand, title, price, discount, rating, and total number of reviews.
+Watch the full project presentation here: **[E-commerce Chat Assistant](https://vaibhav-project.my.canva.site/e-commerce-chat-assistant-presentation)** -->
 
 ---
 
 ## 🛠 Features  
 - Clean and responsive Streamlit-based web interface  
 - Supports multiple query types:  
-  - **FAQ Queries** using RAG for platform-related questions  
-  - **SQL Queries** for dynamic product search and filtering  
-  - **Small Talk** support for casual, friendly interaction  
-- Uses **Semantic Routing** to identify user intent intelligently  
-- Fast and accurate responses powered by **LLaMA-3.3 via GROQ API**  
-- Dynamic product listing from a local SQLite database (no backend server required) 
-- Modular and well-structured codebase for quick customization and scaling   
+  - **RAG Queries**: Semantic retrieval from uploaded documents for knowledge-based questions  
+  - **Web Search Queries**: Real-time search using SerpAPI as fallback or forced search  
+  - **Mixed Queries**: Handles questions combining document context and general knowledge  
+- Flexible **Response Modes**:  
+  - **Detailed**: Step-by-step contextual answers  
+  - **Concise**: Short, direct answers  
+- Fast and accurate responses powered by **LLaMA-3 via GROQ API**  
+- Modular and well-structured codebase for quick customization and scaling  
 
 ---
 
 ## 📂 Project Structure
 
 ```
-E_commerce_Chat_Assistant/
+AI Multi-Provider Chatbot/
 │
-├── app/                                # Main application logic
-│   ├── main.py                         # Streamlit app entry point
-│   ├── faq.py                          # FAQ handling (RAG using ChromaDB)
-│   ├── sql.py                          # SQL-based product search
-│   ├── smalltalk.py                    # Small talk response logic
-│   ├── router.py                       # Semantic intent router
-│   ├── db.sqlite                       # SQLite database file
-│   └── resources/                      # Data files for ingestion
-│       ├── faq_data.csv                # Frequently asked questions dataset
-│       └── ecommerce_data_final.csv    # E-commerce product listing data
+├── config/                               # Configuration and API keys
+│   └── config.py                         # All API keys, model settings, and general configuration
 │
-├── web-scraping/                       # E-commerce product scrapers and tools
-│   ├── csv_to_sqlite.py                # Convert scraped CSV data to SQLite
-│   └── flipkart_data_extraction.ipynb  # Flipkart scraping notebook
+├── models/                               # LLM and embedding models
+│   ├── llm.py                            # Wrapper for LLM models (OpenAI / Groq / Gemini)
+│   └── embeddings.py                     # RAG embedding models for document retrieval
 │
-├── LICENSE                             # Apache License file
-├── README.md                           # This documentation
-└── requirements.txt                    # Python dependencies
+├── utils/                                # Utility functions
+│   ├── rag_utils.py                      # Document chunking, indexing, and retrieval
+│   └── web_search.py                     # Web search integration (e.g., SerpAPI)
+│
+├── app.py                                # Main Streamlit UI logic
+├── LICENSE                               # Apache License
+├── README.md                             # Project documentation
+└── requirements.txt                      # Python dependencies
+
 ```
 
 ---
@@ -76,8 +70,8 @@ This project uses **ChromaDB**, which requires **SQLite ≥ 3.35.0**. Most Linux
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/vaibhavgarg2004/E-commerce-Chat-Assistant.git
-   cd E-commerce-Chat-Assistant
+   git clone https://github.com/vaibhavgarg2004/AI-Multi-Provider-Chatbot.git
+   cd AI-Multi-Provider-Chatbot
    ```
 2. **Install dependencies**:   
    ```commandline
@@ -85,34 +79,36 @@ This project uses **ChromaDB**, which requires **SQLite ≥ 3.35.0**. Most Linux
    ```
 3. **Add GROQ credentials in a .env file inside the app/ directory**:
     ```text
-    GROQ_API_KEY=GROQ_API_KEY_HERE
-    GROQ_MODEL=llama-3.3-70b-versatile
+    GROQ_API_KEY=your_groq_api_key_here
+    GROQ_MODEL=llama-3.1-8b-instant
+    SERPAPI_KEY=your_serpapi_key_here
+    CHROMA_PERSIST_DIR=./chroma_db
+    EMBEDDING_MODEL_NAME=sentence-transformers/all-MiniLM-L6-v2
    ```
 4. **Run the Streamlit app**:   
    ```commandline
-    streamlit run app/main.py
+    streamlit run app.py
    ```
 
 ---
 
 ## 🧠 How It Works
 
-1. **Intent Classification (using Semantic Router)**  
-   - Each user message is analyzed using the **Semantic Router**.  
-   - The router classifies the query into one of three categories:  
-     - `faq`: platform policies and general info  
-     - `sql`: product-related queries using structured data  
-     - `smalltalk`: casual or generic conversations  
+1. **Document Retrieval (RAG)**  
+   - Users upload documents which are chunked and indexed in **ChromaDB**.  
+   - Queries are matched with top-K relevant chunks using embeddings.  
+   - If similarity scores are below a set threshold, the chatbot can optionally fall back to web search. 
 
-2. **Routing Logic**  
-   - **FAQ Route**: Uses **ChromaDB + Sentence Transformers** to retrieve relevant policy answers via semantic search (RAG).  
-   - **SQL Route**: Converts the query into SQL using LLMs and executes it on a **local SQLite product database**.  
-   - **Small Talk**: Returns natural, friendly responses to casual inputs, enhancing engagement.  
+2. **Web Search Fallback**  
+   - **SerpAPI** is used to retrieve live search snippets for queries not found in local documents.    
 
-3. **Dynamic Streamlit Output**  
-   - **SQL Route**: Displays filtered product results with links, titles, and prices.  
-   - **FAQ Route**: Shows concise and accurate answers sourced from uploaded CSV data.  
-   - **Small Talk**: Outputs informal, chatbot-style replies for improved UX.
+3. **LLM Interaction**
+   - Context from both RAG and Web Search is sent to **LLaMA-3 via GROQ**.  
+   - Supports **Detailed** or **Concise** responses based on user-selected preferences.  
+
+4. **Dynamic Response Generation**
+   - Combines document context, web snippets, and general LLM knowledge.  
+   - Generates accurate, context-aware answers, even for multi-part or complex queries.
 
 ---
    
@@ -127,5 +123,5 @@ This project is licensed under the **Apache License 2.0**. See the [LICENSE](./L
 
 ---
 
-*Your AI shopping assistant—ready to serve, search, and support.*
+*Your AI assistant—ready to answer questions, search documents, and fetch real-time information efficiently.*
 
