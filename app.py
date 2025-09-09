@@ -141,7 +141,7 @@ def instructions_page():
 
 def chat_page():
     """Main chat interface page with RAG and indexing capabilities."""
-    st.title("🤖 AI ChatBot")
+    st.title("👾 AI ChatBot")
 
     # Basic session_state defaults.
     if "messages" not in st.session_state:
@@ -222,12 +222,12 @@ def chat_page():
                     response_text = f"Error while generating response: {str(e)}"
 
                 # Add mode + fallback tags
-                mode_label = "📝 Concise Mode" if response_mode == "concise" else "📖 Detailed Mode"
-                if used_fallback_search:
-                    mode_label += " + 🌍 Web Search"
+                # mode_label = "📝 Concise Mode" if response_mode == "concise" else "📖 Detailed Mode"
+                # if used_fallback_search:
+                #     mode_label += " + 🌍 Web Search"
 
-                # Show final output
-                st.markdown(f"**_{mode_label}_**\n\n{response_text}")
+                # # Show final output
+                # st.markdown(f"**_{mode_label}_**\n\n{response_text}")
 
         # Add assistant response to chat history.
         st.session_state.messages.append({"role": "assistant", "content": response_text})
