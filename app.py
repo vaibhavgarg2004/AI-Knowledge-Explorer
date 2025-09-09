@@ -141,7 +141,7 @@ def instructions_page():
 
 def chat_page():
     """Main chat interface page with RAG and indexing capabilities."""
-    st.title("👾 AI ChatBot")
+    st.title("🤖 AI ChatBot")
 
     # Basic session_state defaults.
     if "messages" not in st.session_state:
