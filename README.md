@@ -10,9 +10,9 @@ You can try the tool live here: **[AI Multi-Provider Chatbot](https://vaibhav-pr
 ---
 
 <!-- ## 🎥 Presentation
-Watch the full project presentation here: **[E-commerce Chat Assistant](https://vaibhav-project.my.canva.site/e-commerce-chat-assistant-presentation)** -->
+Watch the full project presentation here: **[E-commerce Chat Assistant](https://vaibhav-project.my.canva.site/e-commerce-chat-assistant-presentation)**
 
----
+--- -->
 
 ## 🛠 Features  
 - Clean and responsive Streamlit-based web interface  
