@@ -1,11 +1,11 @@
-# 🤖 AI Multi-Provider Chatbot
+# 🤖 AI Knowledge Explorer
 
 A smart, conversational AI chatbot built using Streamlit that integrates local document retrieval (RAG) and real-time web search (via SerpAPI). Powered by LLaMA3 via GROQ, this assistant provides accurate and context-aware answers for general knowledge, uploaded documents, and live queries.
 
 ---
 
 ## 🌐 Live Website
-You can try the tool live here: **[AI Multi-Provider Chatbot](https://vaibhav-project-ai-multi-provider-chatbot.streamlit.app/)**
+You can try the tool live here: **[AI Knowledge Explorer](https://vaibhav-project-ai-knowledge-explorer.streamlit.app/)**
 
 ---
 
@@ -31,7 +31,7 @@ Watch the full project presentation here: **[E-commerce Chat Assistant](https://
 ## 📂 Project Structure
 
 ```
-AI Multi-Provider Chatbot/
+AI Knowledge Explorer/
 │
 ├── config/                               # Configuration and API keys
 │   └── config.py                         # All API keys, model settings, and general configuration
@@ -70,8 +70,8 @@ This project uses **ChromaDB**, which requires **SQLite ≥ 3.35.0**. Most Linux
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/vaibhavgarg2004/AI-Multi-Provider-Chatbot.git
-   cd AI-Multi-Provider-Chatbot
+   git clone https://github.com/vaibhavgarg2004/AI-Knowledge-Explorer.git
+   cd AI-Knowledge-Explorer
    ```
 2. **Install dependencies**:   
    ```commandline
