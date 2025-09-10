@@ -2,14 +2,14 @@
 
 A smart, conversational AI chatbot built using Streamlit that integrates local document retrieval (RAG) and real-time web search (via SerpAPI). Powered by LLaMA3 via GROQ, this assistant provides accurate and context-aware answers for general knowledge, uploaded documents, and live queries.
 
-<!-- ---
+---
 
 ## 🌐 Live Website
-You can try the tool live here: **[E-commerce Chat Assistant](https://vaibhav-project-e-commerce-chat-assistant.streamlit.app/)**
+You can try the tool live here: **[AI Multi-Provider Chatbot](https://vaibhav-project-ai-multi-provider-chatbot.streamlit.app/)**
 
 ---
 
-## 🎥 Presentation
+<!-- ## 🎥 Presentation
 Watch the full project presentation here: **[E-commerce Chat Assistant](https://vaibhav-project.my.canva.site/e-commerce-chat-assistant-presentation)** -->
 
 ---
