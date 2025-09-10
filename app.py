@@ -236,7 +236,7 @@ def chat_page():
 
 def main():
     st.set_page_config(
-        page_title="LangChain Multi-Provider ChatBot",
+        page_title="AI Knowledge Explorer",
         page_icon="🤖",
         layout="wide",
         initial_sidebar_state="expanded"
