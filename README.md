@@ -9,10 +9,10 @@ You can try the tool live here: **[AI Knowledge Explorer](https://vaibhav-projec
 
 ---
 
-<!-- ## 🎥 Presentation
-Watch the full project presentation here: **[E-commerce Chat Assistant](https://vaibhav-project.my.canva.site/e-commerce-chat-assistant-presentation)**
+## 🎥 Presentation
+Watch the full project presentation here: **[AI Knowledge Explorer](https://vaibhavgarg2004.github.io/presentations/Presentations/AI%20Knowledge%20Explorer%20Presentation.pdf)**
 
---- -->
+---
 
 ## 🛠 Features  
 - Clean and responsive Streamlit-based web interface  
